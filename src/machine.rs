@@ -26,7 +26,7 @@ impl ModbusDevice {
 
     fn try_run(&self) {
         loop{
-            // polling 
+            // polling
         }
     }
 
@@ -34,13 +34,13 @@ impl ModbusDevice {
 
     }
 
-    pub fn stop(&self) {
-        if let Some(self.handle) = self.handle {
-            let handle = self.handle.unwrap();
-            task::block_on(handle);
+    pub fn stop(&mut self) {
+        match &self.handle {
+            None => {},
+            Some(handle) => {
+                task::block_on(handle);
+            }
         }
-
-        
     }
 
 
