@@ -1,10 +1,34 @@
 use async_std::task;
 use async_std::task::JoinHandle;
+use std::sync::Arc;
 
 #[derive(Clone, Debug)]
-struct Machine{
-    // modbus devices..
-    // 
+struct State {}
+
+trait Device {}
+
+#[derive(Clone)]
+pub struct Machine{
+    machines: Vec<Arc<dyn Device>>,// modbus devices..
+    state: State,
+}
+
+impl Machine{
+    pub fn new() -> Self{
+        Self{
+            machines: Vec::new(),
+            state: State{},
+        }
+    }
+
+    pub fn start(&mut self) {
+        println!("start");
+    }
+
+
+    pub fn stop(&self) {
+        println!("start");
+    }
 }
 
 struct ModbusDevice {
@@ -42,8 +66,6 @@ impl ModbusDevice {
             }
         }
     }
-
-
 }
 
 #[cfg(test)]

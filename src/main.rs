@@ -2,6 +2,7 @@ mod server;
 mod machine;
 
 use server::Server;
+use machine::Machine;
 use async_std::task;
 
 fn main() {
@@ -12,11 +13,11 @@ fn main() {
 
 async fn try_main() {
     let mut server = Server::new();
-    let server_handle = task::spawn(async {});
-
+    let mut machine = Machine::new();
+    
     server.start();
+    machine.start();
+    
+    machine.stop();
     server.stop();
-
-    // wait for machine stopped
-    // wait for server stopped
 }
