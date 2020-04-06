@@ -38,7 +38,7 @@ impl ModbusDevice {
         match &self.handle {
             None => {},
             Some(handle) => {
-                task::block_on(handle);
+                //task::block_on(handle);
             }
         }
     }

@@ -14,6 +14,9 @@ async fn try_main() {
     let mut server = Server::new();
     let server_handle = task::spawn(async {});
 
+    server.start();
+    server.stop();
+
     // wait for machine stopped
     // wait for server stopped
 }
